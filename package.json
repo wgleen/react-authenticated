@@ -1,16 +1,34 @@
 {
   "name": "react-authenticated",
   "version": "1.0.0",
-  "description": "",
+  "description": "Declarative components for controlling authenticated users",
   "scripts": {
     "build": "NODE_ENV=production webpack --progress -p",
     "demo": "webpack-dev-server",
     "prepublishOnly": "npm run build",
     "postpublish": "rm -R dist"
   },
-  "files": [
-    "dist"
+  "main": "dist/index.js",
+  "directories": {
+    "dist": "dist"
+  },
+  "keywords": [
+    "react",
+    "authenticate",
+    "authentication",
+    "auth",
+    "redux"
   ],
+  "author": "Wallace Gleen <wallace.gleen@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wgleen/react-authenticated/issues"
+  },
+  "homepage": "https://github.com/wgleen/react-authenticated#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wgleen/react-authenticated.git"
+  },
   "dependencies": {
     "history": "^4.7.2",
     "prop-types": "^15.6.0",
