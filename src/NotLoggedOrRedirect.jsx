@@ -11,7 +11,7 @@ const _NotLoggedOrRedirect = props => {
     children
   } = props
 
-  return !isLogged ? children : <Redirect to={redirectUrl || '/profile'} />
+  return !isLogged ? children : (redirectUrl ? <Redirect to={redirectUrl} /> : null)
 }
 
 _NotLoggedOrRedirect.propTypes = {

@@ -11,10 +11,10 @@ npm i -S react-authenticated
 * `authenticate` - action creator function
 
 ### LoggedOrRedirect
-* `url` - url to redirect user (default is '/login')
+* `redirectUrl` - url to redirect user (if undefined, not redirect)
 
 ### NotLoggedOrRedirect
-* `url` - url to redirect user (default is '/profile')
+* `redirectUrl` - url to redirect user (if undefined, not redirect)
 
 ## Usage
 #### Do your action creator
