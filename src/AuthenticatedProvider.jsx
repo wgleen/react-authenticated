@@ -5,7 +5,8 @@ import React, {
 import PropTypes from 'prop-types'
 
 const _propTypes = {
-  authenticate: PropTypes.func.isRequired
+  authenticate: PropTypes.func.isRequired,
+  redirectUrls: PropTypes.object
 }
 
 class AuthenticatedProvider extends Component {
@@ -13,9 +14,15 @@ class AuthenticatedProvider extends Component {
   static childContextTypes = _propTypes
 
   getChildContext () {
-    const { authenticate } = this.props
+    const { 
+      authenticate,
+      redirectUrls
+    } = this.props
 
-    return { authenticate }
+    return { 
+      authenticate,
+      redirectUrls
+    }
   }
 
   render () {

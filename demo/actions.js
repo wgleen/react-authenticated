@@ -1,7 +1,7 @@
 import { 
   fetchingAuthenticate,
   receivedAuthenticate
-} from '../dist'
+} from '../lib'
 
 export const login = () => {
   return dispatch => {

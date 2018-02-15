@@ -8,33 +8,29 @@ npm i -S react-authenticated
 
 ## Props
 ### AuthenticatedProvider
-* `authenticate` - action creator function
+* `authenticate` - (func) action creator function
+* `redirectUrls` - (object) config the url to redirect user when logged in and not logged in
 
-### LoggedOrRedirect
-* `redirectUrl` - url to redirect user (if undefined, not redirect)
-
-### NotLoggedOrRedirect
-* `redirectUrl` - url to redirect user (if undefined, not redirect)
 
 ## Usage
 #### Do your action creator
 ```javascript
 import { 
-  fetchAuthenticate,
-  receiveAuthenticate
+  fetchingAuthenticate,
+  receivedAuthenticate
 } from 'react-authenticated'
 
-export const login = credentials => {
+export const auth = credentials => {
   return dispatch => {
-    dispatch(fetchAuthenticate(true))
+    dispatch(fetchingAuthenticate(true))
       
-    httpClient('/login', credentials)
+    httpClient('/auth', credentials)
       .then(res => {
-          // Your login process...
-          dispatch(receiveAuthenticate(res.data))
+          // Your auth process...
+          dispatch(receivedAuthenticate(res.data))
         })
         .catch(er => {
-          dispatch(fetchAuthenticate(false))
+          dispatch(fetchingAuthenticate(false))
         })
   }
 }
@@ -56,7 +52,7 @@ const rootReducer = combineReducers({
 import { AuthenticatedProvider } from 'react-authenticated'
 import { bindActionCreators } from 'redux'
 import store from 'path/to/store'
-import { login } from 'path/to/actions'
+import { auth } from 'path/to/actions'
 
 const App = props => {
   const {
@@ -66,7 +62,13 @@ const App = props => {
 
   return (
     <Provider store={store}>
-      <AuthenticatedProvider authenticate={login}>
+      <AuthenticatedProvider 
+        authenticate={auth}
+        redirectUrls={{
+          logged: '/profile',
+          notLogged: '/entrar'
+        }}
+      >
         {children}
       </AuthenticatedProvider>
     </Provider>
@@ -74,7 +76,7 @@ const App = props => {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ login }, dispatch)
+  bindActionCreators({ auth }, dispatch)
 
 export default connect(null, mapDispatchToProps)(App)
 ```

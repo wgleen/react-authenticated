@@ -5,9 +5,9 @@ const history = createHistory()
 
 class Redirect extends Component {
   componentWillMount () {
-    const { url } = this.props
+    const { to } = this.props
 
-    history.replace(url)
+    history.replace(to)
   }
 
   render () {

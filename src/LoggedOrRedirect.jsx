@@ -4,19 +4,25 @@ import { connect } from 'react-redux'
 import Authenticated from './Authenticated'
 import Redirect from './Redirect'
 
-const _LoggedOrRedirect = props => {
+const _LoggedOrRedirect = (props, context) => {
   const {
     isLogged,
-    redirectUrl,
     children
   } = props
+
+  const { redirectUrls } = context
+
+  const redirectUrl = redirectUrls && redirectUrls.notLogged
 
   return isLogged ? children : (redirectUrl ? <Redirect to={redirectUrl} /> : null)
 }
 
 _LoggedOrRedirect.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
-  redirectUrl: PropTypes.string
+  isLogged: PropTypes.bool.isRequired
+}
+
+_LoggedOrRedirect.contextTypes = {
+  redirectUrls: PropTypes.object
 }
 
 const mapStateToProps = state => ({

@@ -3,21 +3,31 @@
   "version": "1.0.0",
   "description": "Declarative components for controlling authenticated users",
   "scripts": {
-    "build": "NODE_ENV=production webpack --progress -p",
+    "build": "NODE_ENV=production babel src --out-dir lib",
     "demo": "webpack-dev-server",
     "prepublishOnly": "npm run build",
-    "postpublish": "rm -R dist"
+    "postpublish": "rm -R lib"
   },
-  "main": "dist/index.js",
-  "directories": {
-    "dist": "dist"
-  },
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "src"
+  ],
   "keywords": [
     "react",
     "authenticate",
     "authentication",
     "auth",
     "redux"
+  ],
+  "npmName": "react-authenticated",
+  "npmFileMap": [
+    {
+      "basePath": "/lib/",
+      "files": [
+        "*.js"
+      ]
+    }
   ],
   "author": "Wallace Gleen <wallace.gleen@gmail.com>",
   "license": "MIT",
@@ -49,8 +59,8 @@
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.7.2",
-    "redux-devtools-extension": "^2.13.2",
     "react-dom": "^16.2.0",
+    "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.1",

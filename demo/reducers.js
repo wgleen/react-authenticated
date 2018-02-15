@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { reducer as authenticatedReducer } from '../dist'
+import { reducer as authenticatedReducer } from '../lib'
 
 const rootReducer = combineReducers({
   authenticatedReducer

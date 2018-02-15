@@ -17,7 +17,7 @@ import {
   Authenticated,
   LoggedOrRedirect,
   NotLoggedOrRedirect
-} from '../dist/index'
+} from '../lib'
 
 const middlewares = applyMiddleware(thunk)
 
@@ -33,6 +33,10 @@ const _AuthenticatedComponent = props => {
     <AuthenticatedProvider
       authenticate={() => {
         login()
+      }}
+      redirectUrls={{
+        logged: '/profile',
+        notLogged: '/entrar'
       }}
     >
       <div>
