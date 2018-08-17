@@ -30,7 +30,8 @@ _NotLoggedOrRedirect.propTypes = {
 }
 
 _NotLoggedOrRedirect.contextTypes = {
-  redirectUrls: PropTypes.object
+  redirectUrls: PropTypes.object,
+  redirect: PropTypes.func
 }
 
 const mapStateToProps = state => ({
