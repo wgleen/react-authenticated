@@ -36,7 +36,7 @@ const _AuthenticatedComponent = props => {
       }}
       redirectUrls={{
         logged: '/profile',
-        notLogged: '/entrar'
+        unauthorized: '/entrar'
       }}
     >
       <div>

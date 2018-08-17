@@ -1,20 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { history } from './lib'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Authenticated from './Authenticated'
-import Redirect from './Redirect'
 
-const _NotLoggedOrRedirect = (props, context) => {
-  const {
-    isLogged,
-    children
-  } = props
+class _NotLoggedOrRedirect extends Component {
+  componentWillMount () {
+    const { isLogged } = this.props
 
-  const { redirectUrls } = context
+    const { redirectUrls } = this.context
 
-  const redirectUrl = redirectUrls && redirectUrls.logged
+    isLogged && redirectUrls && history.replace(redirectUrls.logged)
+  }
 
-  return !isLogged ? children : (redirectUrl ? <Redirect to={redirectUrl} /> : null)
+  render () {
+    const {
+      isLogged,
+      children
+    } = this.props
+  
+    return !isLogged ? children : null
+  }
 }
 
 _NotLoggedOrRedirect.propTypes = {
