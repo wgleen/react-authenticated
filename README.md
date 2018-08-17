@@ -66,7 +66,7 @@ const App = props => {
         authenticate={auth}
         redirectUrls={{
           logged: '/profile',
-          notLogged: '/entrar'
+          unauthorized: '/entrar'
         }}
       >
         {children}
