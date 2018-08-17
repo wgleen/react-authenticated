@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { history } from './lib'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Authenticated from './Authenticated'
@@ -8,9 +7,12 @@ class _NotLoggedOrRedirect extends Component {
   componentWillMount () {
     const { isLogged } = this.props
 
-    const { redirectUrls } = this.context
+    const { 
+      redirectUrls,
+      redirect
+    } = this.context
 
-    isLogged && redirectUrls && history.replace(redirectUrls.logged)
+    isLogged && redirectUrls && redirect && redirect(redirectUrls.logged)
   }
 
   render () {

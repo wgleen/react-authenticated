@@ -18,6 +18,9 @@ import {
   LoggedOrRedirect,
   NotLoggedOrRedirect
 } from '../lib'
+import createHistory from 'history/createBrowserHistory'
+
+export const history = createHistory()
 
 const middlewares = applyMiddleware(thunk)
 
@@ -38,6 +41,7 @@ const _AuthenticatedComponent = props => {
         logged: '/profile',
         unauthorized: '/entrar'
       }}
+      redirect={history.replace}
     >
       <div>
         <Authenticated>

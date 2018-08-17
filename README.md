@@ -10,7 +10,7 @@ npm i -S react-authenticated
 ### AuthenticatedProvider
 * `authenticate` - (func) action creator function
 * `redirectUrls` - (object) config the url to redirect user when logged in and not logged in
-
+* `redirect` - (func) your function for redirection
 
 ## Usage
 #### Do your action creator
@@ -53,6 +53,9 @@ import { AuthenticatedProvider } from 'react-authenticated'
 import { bindActionCreators } from 'redux'
 import store from 'path/to/store'
 import { auth } from 'path/to/actions'
+import createHistory from 'history/createBrowserHistory'
+
+export const history = createHistory()
 
 const App = props => {
   const {
@@ -68,6 +71,7 @@ const App = props => {
           logged: '/profile',
           unauthorized: '/entrar'
         }}
+        redirect={history.replace}
       >
         {children}
       </AuthenticatedProvider>

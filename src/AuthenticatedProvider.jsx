@@ -6,7 +6,8 @@ import PropTypes from 'prop-types'
 
 const _propTypes = {
   authenticate: PropTypes.func.isRequired,
-  redirectUrls: PropTypes.object
+  redirectUrls: PropTypes.object,
+  redirect: PropTypes.func
 }
 
 class AuthenticatedProvider extends Component {
@@ -16,12 +17,14 @@ class AuthenticatedProvider extends Component {
   getChildContext () {
     const { 
       authenticate,
-      redirectUrls
+      redirectUrls,
+      redirect
     } = this.props
 
     return { 
       authenticate,
-      redirectUrls
+      redirectUrls,
+      redirect
     }
   }
 
