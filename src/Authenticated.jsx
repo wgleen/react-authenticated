@@ -13,11 +13,14 @@ class Authenticated extends Component {
   }
 
   componentWillMount () {
-    const {
-      authenticate
-    } = this.context
+    const { authenticate } = this.context
 
-    if (authenticate)
+    const {
+      fetching,
+      received
+    } = this.props
+
+    if (!fetching && !received && authenticate)
       authenticate()
   }
 
